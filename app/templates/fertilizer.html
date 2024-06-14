@@ -1,0 +1,188 @@
+{% extends 'layout.html' %} {% block body %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agricultural Irrigation Technologies</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/abouts/about-1/assets/css/about-1.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Angkor&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+      *{
+        color: white;
+    }
+  html body {
+        /* background-image: linear-gradient(to right top, #ff6f91, #ff7c81, #ff8b72, #ff9c67, #ffae61, #ffba60, #ffc660, #ffd361, #fedc64, #fde567, #fbef6c, #f9f871); */
+        background-color: #0D1117;
+    
+      }
+    .main{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
+      align-items: center;
+      
+
+      /* border: 2px solid black; */
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; /* Optional: You can adjust margin to your preference */
+}
+input[type="number"]{
+  outline: none;
+  border: none;
+  border-bottom: 0.1px solid rgba(23, 210, 61, 0.644);
+  border-radius: 0px;
+}
+    h2{        
+      text-align: center;
+      font-family: "Angkor", serif;
+      font-weight: 400;
+    font-style: normal;
+    /* color: black; */
+    }
+    ::placeholder{
+      font-size: 12px;
+    }
+    input[type="number"],input[type="number"]:focus{
+      color: white;
+      background-color: transparent;
+    }
+    #formedit{
+      
+      display: flex;
+      justify-content:space-around;
+      align-items:center;
+      flex-direction: column;
+      /* border: 2px solid red; */
+      height: 60vh;
+      /* box-shadow: 5px 5px 200px 0px rgba(18, 18, 18, 0.496); */
+    }
+    option{
+      background-color: #0D1117;
+      text-align: center;
+      color: white;
+    }
+</style>
+<!--Form Section-->
+
+<div class="main">
+  <h2 class="" style="text-align: center;">
+  Get informed advice on fertilizer based on soil
+  </h2>
+  <div style="
+    width:30%;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    /* padding: 5%; */
+    background-color: #484f583f;
+        border: 0.1px solid rgba(255, 255, 255, 0.104);
+  ">
+
+<form method="POST" id="formedit" action="{{ url_for('fert_recommend') }}">
+  <div class="form-group">
+    <label for="Nitrogen" style="font-size: 14px"><b>Nitrogen</b></label>
+    <input
+      type="number"
+      class="form-control"
+      id="Nitrogen"
+      name="nitrogen"
+      placeholder="Enter the value (example:50)"
+      
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="Phosphorous" style="font-size: 14px"
+      ><b>Phosphorous</b></label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="Phosphorous"
+      name="phosphorous"
+      placeholder="Enter the value (example:50)"
+      
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="Pottasium" style="font-size: 14px"><b>Pottasium</b></label>
+    <input
+      type="number"
+      class="form-control"
+      id="Pottasium"
+      name="pottasium"
+      placeholder="Enter the value (example:50)"
+      
+      required
+    />
+  </div>
+  <div class="form-group" style="display: flex;justify-content:space-between;align-items:center;; width: 14vw;flex-direction:column;height: 10vh;">
+    <!-- <label for="crop" style="font-size: 14px;"><p>Crop you want to grow</p></label> -->
+    <select
+      name="cropname"
+      class="form-control"
+      id="crop"
+      placeholder="Select a crop"
+      style="background-color: transparent;color: white;"
+      required
+    >
+      <option selected style="text-align: center;">Select Crop To Grow</option>
+      <option>rice</option>
+      <option>maize</option>
+      <option>chickpea</option>
+      <option>kidneybeans</option>
+      <option>pigeonpeas</option>
+      <option>mothbeans</option>
+      <option>mungbean</option>
+      <option>blackgram</option>
+      <option>lentil</option>
+      <option>pomegranate</option>
+      <option>banana</option>
+      <option>mango</option>
+      <option>grapes</option>
+      <option>watermelon</option>
+      <option>muskmelon</option>
+      <option>apple</option>
+      <option>orange</option>
+      <option>papaya</option>
+      <option>coconut</option>
+      <option>cotton</option>
+      <option>jute</option>
+      <option>coffee</option>
+    </select>
+  </div>
+
+  <div class="d-flex p-0 justify-content-center">
+    <button
+      type="submit"
+      class="btn btn-success p-0"
+      style="
+        width: 80px;
+        height: 30px;
+        /* border-radius: 12px; */
+      "
+    >
+      Predict
+    </button>
+  </div>
+</form>
+</div>
+</div>
+{% endblock %}
